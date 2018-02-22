@@ -37,10 +37,12 @@ const Auth = {
     requests.put('/user',{user})
 };
 
+let setToken = _token => {token = _token;} 
+
 export default {
   Articles,
   Auth,
-  setToken: _token => { token = _token; }
+  setToken
 };
 
 // 'use strict';
