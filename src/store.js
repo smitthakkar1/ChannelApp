@@ -4,12 +4,17 @@ import auth from './reducers/auth';
 import common from './reducers/common';
 import home from './reducers/home';
 import settings from './reducers/settings';
-
+import article from './reducers/article';
+import articlelist from './reducers/articlelist';
+import profile from './reducers/profile';
 const reducer = combineReducers({
     auth,
     home,
     common,
-    settings
+    settings,
+    article,
+    articlelist,
+    profile
 }); 
 
 const store = createStore(reducer,applyMiddleware(promiseMiddleware,localStorageMiddleware));
