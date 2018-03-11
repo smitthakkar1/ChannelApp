@@ -37,7 +37,9 @@ const Articles = {
   favoritedBy: (author, page) =>
     requests.get(`/articles?favorited=${encodeURIComponent(author)}&limit=20`),
   get: slug =>
-    requests.get(`/articles/${slug}`)
+    requests.get(`/articles/${slug}`),
+  feed: () => 
+    requests.get(`/articles/feed?limit=15`)
 };
 
 const Auth = {

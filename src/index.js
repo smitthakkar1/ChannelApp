@@ -4,7 +4,8 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import store from './store';
-import {HashRouter, Switch, BrowserRouter, Route} from 'react-router-dom';
+import {HashRouter, BrowserRouter, Route} from 'react-router-dom';
+import {Switch} from 'react-router';
 import {Router} from 'react-router';
 import Home from './components/Home'; 
 import Login from './components/Login';
@@ -25,10 +26,25 @@ ReactDOM.render((
             <Route path = "/register" component={Register} />
             <Route path = "/settings" component={Setting} />
             <Route path = "/article/:id" component={Article} />
-            <Route path="/@:username" component={Profile} />
+            <Route exact path="/@:username" component={Profile} />
             <Route path="/@:username/favorites" component={ProfileFavorites} />
         </div>
     </BrowserRouter>
+
+        {/* <BrowserRouter>
+            <div>
+            <Route component={App} />
+                <Switch>
+                    <Route exact path="/" component= {Home}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path = "/register" component={Register} />
+                    <Route path = "/settings" component={Setting} />
+                    <Route path = "/article/:id" component={Article} />
+                    <Route path="/@:username" component={Profile} />
+                </Switch>
+            </div>
+    </BrowserRouter> */}
+
     </Provider>
 
 ), document.getElementById('root'));
