@@ -7,6 +7,8 @@ import settings from './reducers/settings';
 import article from './reducers/article';
 import articlelist from './reducers/articlelist';
 import profile from './reducers/profile';
+import editor from './reducers/editor';
+
 const reducer = combineReducers({
     auth,
     home,
@@ -14,7 +16,8 @@ const reducer = combineReducers({
     settings,
     article,
     articlelist,
-    profile
+    profile,
+    editor
 }); 
 
 const store = createStore(reducer,applyMiddleware(promiseMiddleware,localStorageMiddleware));

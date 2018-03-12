@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   onLoad: payload =>
     dispatch({ type: 'ARTICLE_PAGE_LOADED', payload }),
   onUnload: () =>
-    dispatch({ type: 'ARTICLE_PAGE_UNLOADED' })
+    dispatch({type: 'ARTICLE_PAGE_UNLOADED'})
 });
 
 class Article extends React.Component{

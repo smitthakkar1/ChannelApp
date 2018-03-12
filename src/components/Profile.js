@@ -63,6 +63,7 @@ const mapDispatchToProps = dispatch => ({
     payload: agent.Profile.follow(username)
   }),
   onLoad: payload => dispatch({ type: 'PROFILE_PAGE_LOADED', payload }),
+  onSetPage: (page, payload) => dispatch({ type: 'SET_PAGE', page, payload }),
   onUnfollow: username => dispatch({
     type: 'UNFOLLOW_USER',
     payload: agent.Profile.unfollow(username)
@@ -76,6 +77,11 @@ class Profile extends React.Component {
       agent.Profile.get(this.props.match.params.username),
       agent.Articles.byAuthor(this.props.match.params.username)
     ]));
+  }
+
+  onSetPage(page) {
+    const promise = agent.Articles.byAuthor(this.props.profile.username, page);
+    this.props.onSetPage(page, promise);
   }
 
   componentWillUnmount() {
@@ -106,9 +112,9 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log("profile render");
-
     const profile = this.props.profile;
+    const onSetPage = page => this.onSetPage(page)
+
     if (!profile) {
       return null;
     }
@@ -154,7 +160,11 @@ class Profile extends React.Component {
               </div>
 
               <ArticleList
-                articles={this.props.articles} />
+                articles={this.props.articles} 
+                articlesCount={this.props.articlesCount}
+                currentPage={this.props.currentPage}
+                onSetPage={this.onSetPage}
+                />
             </div>
 
           </div>

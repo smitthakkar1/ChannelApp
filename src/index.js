@@ -14,13 +14,13 @@ import Setting from './components/Settings';
 import Article from './Article/index';
 import Profile from './components/Profile';
 import ProfileFavorites from './components/ProfileFavorites';
-
+import Editor from './components/Editor';
 
 ReactDOM.render((
     <Provider store = {store}>
     <BrowserRouter>
         <div>
-            <Route path="/" component= {App} />
+            <Route path="/" component= {App}/>
             <Route exact path="/" component= {Home}/>
             <Route path="/login" component={Login}/>
             <Route path = "/register" component={Register} />
@@ -28,23 +28,10 @@ ReactDOM.render((
             <Route path = "/article/:id" component={Article} />
             <Route exact path="/@:username" component={Profile} />
             <Route path="/@:username/favorites" component={ProfileFavorites} />
+            <Route path="/editor" component={Editor} />
+            <Route path="/editor/:slug" component={Editor} />
         </div>
     </BrowserRouter>
-
-        {/* <BrowserRouter>
-            <div>
-            <Route component={App} />
-                <Switch>
-                    <Route exact path="/" component= {Home}/>
-                    <Route path="/login" component={Login}/>
-                    <Route path = "/register" component={Register} />
-                    <Route path = "/settings" component={Setting} />
-                    <Route path = "/article/:id" component={Article} />
-                    <Route path="/@:username" component={Profile} />
-                </Switch>
-            </div>
-    </BrowserRouter> */}
-
     </Provider>
 
 ), document.getElementById('root'));
